@@ -1,0 +1,286 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY : CEREMONIAL HALL ================= */
+body {
+  height: 100vh;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #eee;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.04), transparent 60%),
+    linear-gradient(180deg, #080808, #141414);
+}
+
+/* SIDE LIGHTING – SUBTLE ARCHITECTURAL DEPTH */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 22vw;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before { left: 0; }
+body::after  { right: 0; }
+
+/* ================= BANNER ================= */
+.legacy-banner {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 44px;
+
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: #d4af37;
+  background: #0e0e0e;
+
+  border: 1px solid rgba(212,175,55,0.6);
+  border-radius: 50px;
+
+  box-shadow:
+    0 6px 20px rgba(0,0,0,0.6),
+    inset 0 0 10px rgba(212,175,55,0.15);
+
+  z-index: 10;
+}
+
+/* ================= WALL ================= */
+.wall {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  /* Framed hall outline */
+  box-shadow: inset 0 0 0 1px rgba(212,175,55,0.15);
+}
+
+/* DARK EDGE FALL-OFF */
+.wall::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 55%,
+    rgba(0,0,0,0.75)
+  );
+  pointer-events: none;
+}
+
+/* ================= FRAME ================= */
+.frame {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  animation: reveal 3s ease forwards;
+}
+
+.frame.active {
+  display: flex;
+}
+
+/* ================= IMAGE FRAME ================= */
+.frame img {
+  width: 62vw;
+  max-width: 1000px;
+  height: 60vh;
+  object-fit: contain;
+
+  background: #0c0c0c;
+  padding: 14px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.85),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* STAGE GLOW (ANCHORS FRAME) */
+.frame::after {
+  content: "";
+  position: absolute;
+  bottom: -42px;
+  width: 70%;
+  height: 70px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212,175,55,0.28),
+    transparent 70%
+  );
+  filter: blur(22px);
+}
+
+/* ================= CAPTION : METAL PLAQUE ================= */
+.caption {
+  margin-top: 22px;
+  padding: 14px 30px;
+  max-width: 72%;
+
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: center;
+
+  color: #e3e3e3;
+  background: rgba(14,14,14,0.88);
+
+  border-top: 1px solid rgba(212,175,55,0.45);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.6);
+}
+
+/* SUBTLE CAPTION */
+.caption.subtle {
+  font-size: 1.3rem;
+  opacity: 0.7;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* ================= TEXT CARD ================= */
+.text-card {
+  justify-content: center;
+}
+
+.text-inside {
+  width: 62vw;
+  max-width: 1000px;
+  height: 60vh;
+
+  background: #0f0f0f;
+  padding: 70px;
+
+  border: 1px solid rgba(212,175,55,0.45);
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.85),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ================= TEXT ================= */
+.text-inside h2 {
+  font-size: 2.8rem;
+  color: #d4af37;
+  margin-bottom: 30px;
+  letter-spacing: 1.5px;
+}
+
+.text-inside p {
+  font-size: 1.7rem;
+  line-height: 1.8;
+  margin-bottom: 26px;
+  color: #ededed;
+}
+
+.text-inside .family {
+  font-size: 1.4rem;
+  opacity: 0.85;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+.wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(212,175,55,0.08) 0%,
+      transparent 18%,
+      transparent 82%,
+      rgba(212,175,55,0.08) 100%);
+  pointer-events: none;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 20vw;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.05),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  width: 70%;
+  height: 60px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212,175,55,0.25),
+    transparent 70%
+  );
+  filter: blur(18px);
+}
+
+.wall {
+  box-shadow:
+    inset 0 0 0 1px rgba(212,175,55,0.15);
+}
+
+body {
+  background-blend-mode: overlay;
+}
+
+body::selection {
+  background: rgba(212,175,55,0.3);
+}
