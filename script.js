@@ -1,11 +1,22 @@
 const frames = document.querySelectorAll('.frame');
 let current = 0;
+const slideDuration = 6000; // 6 seconds per slide
 
-setInterval(() => {
+frames[current].classList.add('active');
+
+const slideshow = setInterval(() => {
   frames[current].classList.remove('active');
-  current = (current + 1) % frames.length;
+  current++;
+
+  // STOP when last slide is reached
+  if (current >= frames.length) {
+    clearInterval(slideshow);
+    return;
+  }
+
   frames[current].classList.add('active');
-}, 6000);
+}, slideDuration);
+
 
 
 document.addEventListener("click", () => {
